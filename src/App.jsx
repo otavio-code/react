@@ -1,7 +1,7 @@
 import './App.css';
-import BuscaCep from './class/buscarCep';
+import BuscaPokemon from './class/buscaPokemon';
 
 
 export default function App() {
-  return <BuscaCep />
+  return <BuscaPokemon />
 }

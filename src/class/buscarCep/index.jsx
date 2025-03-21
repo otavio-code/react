@@ -9,17 +9,28 @@ export default function BuscaCep(){
     const handleBuscar = () => {
 
         if(!cep) return
-        fetch(`viacep.com.br/ws/${cep}/json/`)
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
         .then(res => res.json())
         .then(result => setData(result))
 
     }
+    console.log(cep, 'debug cep')
+    console.log(data, 'debug data')
 
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>Busque o seu CEP</h1>
-            <input onChange={(e) => setCep(e.target.value)} type="text" className={styles.input} />
-            <button className={styles.button} onClick={handleBuscar}>pesquisar</button>
+            <input minLength={8} onChange={(e) => setCep(e.target.value)} type="number" className={styles.input} />
+            <button disabled={cep.length < 8 ? true : false} className={styles.button} onClick={handleBuscar}>pesquisar</button>
+            {
+                data && (
+                    <div className="div">
+                        <p>endereço: {data.logradouro}</p>
+                        <p>cidade: {data.localidade}</p>
+                        <p>bairro: {data.bairro}</p>
+                    </div>
+                )
+            }
         </div>
     )
 }

@@ -2,6 +2,33 @@ import { useState } from 'react'
 import './styles.css'
 
 export default function ApiPokemon() {
+
+    const arrayTypes = {
+        'normal': '#fff',
+        'fighting': '#fff',
+        'flying': '#fff',
+        'poison': '#fff',
+        'ground': '#fff',
+        'rock': '#fff',
+        'bug': '#fff',
+        'ghost': '#fff',
+        'steel': '#fff',
+        'fire': '#fff',
+        'water': '#fff',
+        'grass': '#fff',
+        'electric': '#fff',
+        'psychic': '#fff',
+        'ice': '#fff',
+        'dragon': '#fff',
+        'dark': '#fff',
+        'fairy': '#fff',
+        'stellar': '#fff',
+        'unknown': '#fff',
+      }
+    
+      console.log(arrayTypes.dark)
+    
+
     // aloca o nome do pokemon que vem do input
     const [pokemon, setPokemon] = useState('')
     // aloca o dado que vem da API
@@ -39,8 +66,11 @@ export default function ApiPokemon() {
             })
     }
 
+    const handleTypeColor = data && arrayTypes[data?.types?.[0].type?.name]
+    console.log(data)
+
     return (
-        <div className="pokemon-container">
+        <div className="pokemon-container" style={{backgroundColor: handleTypeColor}}>
             <h1>Busque seu Pokemon Favorito</h1>
             <input
                 type="text"

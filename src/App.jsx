@@ -21,7 +21,7 @@ export default function App() {
   return <div className="">
     {
       product && product.map((prd, id) => {
-        return <Card key={id} image={prd.image} title={prd.category} description={prd.description}/>
+        return <Card key={id} image={prd.image} title={prd.category} price={prd.price} description={prd.description}/>
       })
     }
   </div>
